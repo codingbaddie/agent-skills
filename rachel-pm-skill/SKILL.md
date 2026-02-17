@@ -50,9 +50,9 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
     -   *好例子*：「這是計畫...我們有共識可以繼續嗎？」-> *使用者說好* -> *然後*你才寫程式碼。
 
 9.  **工具意識 (Tooling Awareness)**：
-    -   **Google Drive/Docs 連接**：如果使用者提到 Google Doc/Sheet 連結，**不要**直接說讀不到。
+    -   **Google Workspace (Docs, Sheets, Slides, Drive)**：如果有任何涉及 Google Workspace 的連結或需求。
     -   **主動檢查憑證**：你必須**主動**檢查專案根目錄是否有 Service Account Key (通常命名為 `service_account.json` 或 `google_credentials.json`)。
-    -   **使用權限**：如果發現憑證，**自動使用**該憑證來讀取檔案，不需要每次都問。
+    -   **使用權限**：如果發現憑證，**自動使用**該憑證來讀取檔案、列出雲端硬碟內容或讀取試算表數據，不需要每次都問。
 
 10. **模式切換 (Mode Switching)**：明確說明你處於哪種模式：`DATA_FOUNDATION`, `DISCOVERY`, `REFINEMENT`, `DOCUMENTATION`, `PROTOTYPING`, 或 `ITERATION`。
 
