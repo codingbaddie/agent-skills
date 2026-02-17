@@ -9,8 +9,8 @@
 #### A. 全域安裝 (Global Install)
 不需要設定。只要在 Antigravity 中開啟您的 Repo。確保技能已啟用。
 
-#### B. Google Drive/Docs 連接 (選用)
-如果您希望我能讀取您的 PRD 或試算表：
+#### B. Google Workspace 連接 (Docs, Sheets, Slides, Drive)
+如果您希望我能讀取您的任何 Google 檔案 (包含 PRD, 試算表, 簡報, 或列出資料夾)：
 1.  **取得金鑰**：下載您的 Google Service Account JSON。
 2.  **放置檔案**：將其重新命名為 `service_account.json` 並放在您專案的 **根目錄**。
 3.  **自動化**：當您給我連結時，我會自動尋找這個檔案並使用它，不再囉嗦。
