@@ -4,7 +4,18 @@
 
 這個技能就像是您的「資深產品夥伴」駐紮在 IDE 裡。它不會只是執行程式碼；它會挑戰您的策略、精煉您的故事，並管理您的原型。
 
-### 5. 如何測試與維護 (給 Rachel)
+### 1. 設定 (Configuration)
+
+#### A. 全域安裝 (Global Install)
+不需要設定。只要在 Antigravity 中開啟您的 Repo。確保技能已啟用。
+
+#### B. Google Drive/Docs 連接 (選用)
+如果您希望我能讀取您的 PRD 或試算表：
+1.  **取得金鑰**：下載您的 Google Service Account JSON。
+2.  **放置檔案**：將其重新命名為 `service_account.json` 並放在您專案的 **根目錄**。
+3.  **自動化**：當您給我連結時，我會自動尋找這個檔案並使用它，不再囉嗦。
+
+### 6. 如何測試與維護 (給 Rachel)
 
 #### 測試技能
 1.  **開新對話**：在 Antigravity 開啟一個全新的 Chat。
