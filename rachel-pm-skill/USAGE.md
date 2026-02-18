@@ -22,6 +22,12 @@
     ```
 4.  **完成！** 現在該專案已經擁有最新的 Skill。
 
+> **💡 給新手的指令小知識：為什麼要 `mkdir -p`？**
+> *   Antigravity 規定的 Skill 放置位置是 `.agent/skills`。
+> *   但新專案通常沒有這些資料夾。
+> *   `mkdir -p .agent/skills` 的意思是：「幫我建立 `skills` 資料夾，如果父層 `.agent` 也不存在，就順便幫我建出來！」(Parents flag)。
+> *   這一步通了，後面的連結才能成功建立。
+
 ---
 
 ## 2. 設定 (Configuration)
