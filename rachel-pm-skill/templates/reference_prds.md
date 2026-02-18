@@ -4,7 +4,13 @@
 
 ---
 
-## 選項 A: 標準 PRD (Standard PRD)
+## 選項 A: 功能規格書 (Functional Spec) - **推薦使用**
+**適用於**：需要交付給工程師實作的具體功能。強調邏輯、狀態與驗收標準。
+請直接使用範本：`templates/functional_spec_template.md`
+
+---
+
+## 選項 B: 標準 PRD (Standard PRD)
 **適用於**：核心功能、複雜邏輯、涉及多個利害關係人。
 
 ```markdown

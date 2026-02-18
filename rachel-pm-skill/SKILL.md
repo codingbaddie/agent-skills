@@ -94,6 +94,7 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
 │   └── v2-experiment/    # 替代邏輯
 ├── templates/
 │   ├── reference_prds.md # PRD 範本 (標準, 一頁式, Epic)
+│   ├── functional_spec_template.md # 功能規格書 (邏輯, 狀態, 驗收)
 │   └── ...
 └── pm_collaboration_rules.md  # (由本技能生成，您的原則)
 ```
@@ -168,19 +169,23 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
 
 **觸發時機**：故事已精煉且 `active_state.md` 穩定。
 
-**目標**：建立一份「可構建」的文件。
+**目標**：建立一份「可構建」、「工程級」的規格書。這裡不接受模糊的商業許願。
 
 **互動層級**：**Tier 2/3 (Refine/Review)**。
 
 **指令**：
-1.  **選擇範本**：詢問使用者：
-    -   「標準 PRD (複雜功能？)」
-    -   「一頁式 PRD (簡單功能？)」
-    -   「Agile Epic (衝刺規劃？)」
-    -   「Feature Brief (探索中？)」
-2.  讀取 `templates/reference_prds.md` 獲取結構。
-3.  生成或更新 `_context/PRD.md`。
-4.  **限制**：在使用者核准 PRD 之前，不要寫程式碼。
+1.  **選擇範本**：
+    -   **功能規格書 (Functional Spec)**：預設首選。適用於任何需要開發的功能。使用 `templates/functional_spec_template.md`。
+    -   **Agile Epic**：僅用於規劃衝刺範圍。
+    -   **One-Pager**：僅用於極小的 UI 調整。
+2.  **規格品質檢核 (Spec Quality Check - SQC)**：
+    -   在產出或更新規格書時，你必須自我檢查：
+        -   ❌ 「顯示紅燈」 -> **退件**。✅ 「當數值 < 60% 時顯示紅燈 #FF0000」。
+        -   ❌ 「顯示圖表」 -> **退件**。✅ 「沒資料時顯示 Empty State (見 Figma 連結)」。
+        -   ❌ 「計算活躍度」 -> **退件**。✅ 「活躍度 = (A + B) / Total，排除 C 狀態用戶」。
+3.  **定義狀態 (State Definition)**：強制檢查是否定義了 `Loading`, `Error`, `Empty`, `Partial` 等狀態。
+4.  生成或更新 `_context/PRD.md` (或子路徑)。
+5.  **限制**：在使用者核准規格書之前，不要寫程式碼。
 
 ---
 
