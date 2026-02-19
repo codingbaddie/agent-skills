@@ -1,4 +1,95 @@
-# Rachel's PM Skill (資深 PM 版) - 使用手冊
+# Rachel's PM Skill - User Manual
+
+## 1. Installation & Sync
+
+You asked: "How can I synchronize updates across all projects?" Here is the best solution:
+
+### Symlink (Symbolic Link) - **Recommended 🌟**
+If you want to use this Skill across multiple projects without copy-pasting every time, use a **Symlink**. This ensures all projects point to this "Single Source of Truth," so updating here updates everywhere.
+
+**Steps (Mac/Linux)**:
+
+1.  Open Terminal.
+2.  Go to the target project's `.agent/skills` folder (create if missing):
+    ```bash
+    mkdir -p ~/Documents/your-target-project/.agent/skills
+    cd ~/Documents/your-target-project/.agent/skills
+    ```
+3.  Create the link (pointing to this Repo's path):
+    ```bash
+    # Assuming this Skill is at ~/Documents/awesome-agent-skills/rachel-pm-skill
+    ln -s ~/Documents/awesome-agent-skills/rachel-pm-skill .
+    ```
+4.  **Done!** Now that project has the latest Skill.
+
+> **💡 Tip: Why `mkdir -p`?**
+> *   Antigravity expects skills in `.agent/skills`.
+> *   New projects often lack these folders.
+> *   `mkdir -p` creates parent directories if they don't exist.
+
+---
+
+## 2. Configuration
+
+### Google Workspace Connection
+If you want me to read your Google files (PRD, Sheets, Slides):
+1.  **Get Key**: Download your Google Service Account JSON.
+2.  **Place File**: Rename it to `service_account.json` and place it in your project's **root directory**.
+3.  **Automation**: When you give me a link, I'll automatically find and use this file.
+
+---
+
+## 3. Interaction Loop
+
+> **Rule**: I will **NEVER** write code/docs without your explicit "Yes". We only act on consensus.
+
+### Phase 1: Discovery
+**You say**: "I have an idea for [Feature]..."
+**AI Behavior**: Challenges you with **Product Sense (SENSE)** (Strategy, Empathy, Nuance).
+
+### Phase 2: Smart Generation
+**AI Behavior**: After agreeing on the story, generates `_context/mock_data.json`.
+*   *Story*: "Filter 'High Risk' patients." -> *Data*: Create 5 patients with `risk_level: 'high'`.
+
+### Phase 3: Refinement (The Scalpel)
+**AI Behavior**: If the feature is large, uses **SPIDR** to split it (Happy Path vs Edge Cases).
+
+### Phase 4: Documentation (Blueprint)
+**AI Behavior**: Generates "Functional Spec".
+*   **Focus**: Logic formulas, States (Empty/Error), and Acceptance Criteria.
+
+### Phase 5: Prototyping (Vibe Build)
+**AI Behavior**: Switches to **Tier 1 Execution** to build `prototypes/v1-mvp/`.
+
+---
+
+## 4. Key Triggers
+-   **"Challenge me"**: Forces a strategic review.
+-   **"Split this story"**: Triggers SPIDR refinement.
+-   **"Pivot"**: Starts a new experiment (`v2`) without breaking the old one.
+
+---
+
+## 5. How to Test & Maintain (For Rachel)
+
+### Testing the Skill
+1.  **Start a new session**.
+2.  **Input**: "I have a new idea for a CRM feature."
+3.  **Verify**:
+    -   Did I ask product sense questions?
+    -   Did I insist on specs before code?
+    -   Did I explain "Why"?
+
+### Updating the Skill
+To add a new rule (e.g., "Always use Tailwind"):
+1.  Edit `SKILL.md`: Add the rule under "Key Rules".
+2.  Edit `templates/`: Modify templates.
+3.  **Reload**: Restart the Agent to apply changes.
+
+---
+---
+
+# Rachel's PM Skill (資深 PM 版) - 使用手冊 (中文版)
 
 ## 1. 安裝與同步 (Installation & Sync)
 
