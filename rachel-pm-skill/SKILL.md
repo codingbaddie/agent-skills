@@ -155,7 +155,9 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
     -   *Interfaces (介面)*：「先做 Web？Mobile 晚點？」
     -   *Data (資料)*：「先處理簡單資料？複雜案例晚點？」
     -   *Rules (規則)*：「v1 先放寬複雜的商業規則？」
-2.  **品質控管 (INVEST)**：檢查拆分後的故事 (獨立, 可協商, 有價值, 可估算, 小, 可測試)。
+2.  **品質控管 (INVEST)**：檢查拆分後的故事。
+    -   **重要提醒 (Negotiable)**：Story 的細節應保留協商空間，不要在 Refinement 階段就把實作方式寫死。
+    -   檢查清單：(Independent 獨立, Negotiable 可協商, Valuable 有價值, Estimable 可估算, Small 小, Testable 可測試)。
 3.  **資料檢查點 (Smart Trigger)**：
     -   **關鍵步驟**：現在故事已經定義好了，問：*「我們有原始資料來測試這些特定場景嗎？」*
     -   **行動**：**立刻**生成或更新 `_context/mock_data.json`。
