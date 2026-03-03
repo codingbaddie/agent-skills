@@ -2,30 +2,42 @@
 
 ## 1. Installation & Sync
 
-You asked: "How can I synchronize updates across all projects?" Here is the best solution:
+If you want to use this Skill across multiple projects without copy-pasting every time, AND you need to sync it across multiple computers (e.g., working from desktop and laptop), follow these steps:
 
-### Symlink (Symbolic Link) - **Recommended 🌟**
-If you want to use this Skill across multiple projects without copy-pasting every time, use a **Symlink**. This ensures all projects point to this "Single Source of Truth," so updating here updates everywhere.
+### Step 1: Centralized Repository Setup (First-time per computer)
+Clone this repository to a centralized location on your machine (e.g., your `Documents` folder) so all your projects can reference it.
 
-**Steps (Mac/Linux)**:
+1. Open Terminal.
+2. Clone the repository:
+   ```bash
+   cd ~/Documents
+   git clone https://github.com/codingbaddie/agent-skills.git awesome-agent-skills
+   ```
 
-1.  Open Terminal.
-2.  Go to the target project's `.agent/skills` folder (create if missing):
+### Step 2: Use Symlink in Your Projects (Recommended 🌟)
+Use a **Symlink** to link the centralized skill to each of your projects. This acts as a desktop shortcut; updating the central skill updates it everywhere.
+
+1.  Go to your target project's `.agent/skills` folder (create if missing):
     ```bash
     mkdir -p ~/Documents/your-target-project/.agent/skills
     cd ~/Documents/your-target-project/.agent/skills
     ```
-3.  Create the link (pointing to this Repo's path):
+2.  Create the link (pointing to the centralized repository):
     ```bash
-    # Assuming this Skill is at ~/Documents/awesome-agent-skills/rachel-pm-skill
     ln -s ~/Documents/awesome-agent-skills/rachel-pm-skill .
     ```
-4.  **Done!** Now that project has the latest Skill.
+3.  **Done!** Now that project has the latest Skill.
 
 > **💡 Tip: Why `mkdir -p`?**
 > *   Antigravity expects skills in `.agent/skills`.
 > *   New projects often lack these folders.
 > *   `mkdir -p` creates parent directories if they don't exist.
+
+### Step 3: Synching Across Multiple Computers
+Since the skill is a Git repository, you can easily synchronize changes across all your computers:
+
+*   **When you update the skill:** Go to `~/Documents/awesome-agent-skills`, run `git commit`, and `git push` to GitHub.
+*   **When you switch to another computer:** Open Terminal, go to `~/Documents/awesome-agent-skills`, and run `git pull` to get the latest updates. All your symlinked projects on that computer will instantly use the updated skill.
 
 ---
 
@@ -93,31 +105,42 @@ To add a new rule (e.g., "Always use Tailwind"):
 
 ## 1. 安裝與同步 (Installation & Sync)
 
-您問到：「如何讓所有專案同步更新？」這裡有最佳解法：
+如果您想在多個專案使用此 Skill (避免每次更新都複製貼上)，同時又有在**多台電腦間切換工作**的需求，請依照以下步驟設定：
 
-### Symlink (軟連結) - **最推薦 🌟**
-如果您想在多個專案使用此 Skill，但不想每次更新都複製貼上，請使用 **Symlink**。這樣所有的專案都會指向這一份「真理」，您只要更新這裡，所有專案都會同步。
+### 第一步：集中管理技能儲存庫 (每台電腦的首次設定)
+將此儲存庫下載到電腦上的一個集中位置 (例如 `Documents` 資料夾)，讓所有的專案都能參考到同一份檔案。
 
-**操作步驟 (Mac/Linux)**：
+1. 開啟終端機 (Terminal)。
+2. 下載儲存庫：
+   ```bash
+   cd ~/Documents
+   git clone https://github.com/codingbaddie/agent-skills.git awesome-agent-skills
+   ```
 
-1.  開啟終端機 (Terminal)。
-2.  進入目標專案的 `.agent/skills` 資料夾 (若無則建立)：
+### 第二步：在專案中使用 Symlink (軟連結) - 最推薦 🌟
+使用 **Symlink** 將集中管理的技能連結到您的各個專案中。概念就像「捷徑」，只要集中管理的檔案更新了，所有專案都會自動同步。
+
+1.  進入目標專案的 `.agent/skills` 資料夾 (若無則建立)：
     ```bash
     mkdir -p ~/Documents/your-target-project/.agent/skills
     cd ~/Documents/your-target-project/.agent/skills
     ```
-3.  建立連結 (指向此 Repo 的路徑)：
+2.  建立連結 (指向集中管理的儲存庫)：
     ```bash
-    # 假設此 Skill 在 ~/Documents/awesome-agent-skills/rachel-pm-skill
     ln -s ~/Documents/awesome-agent-skills/rachel-pm-skill .
     ```
-4.  **完成！** 現在該專案已經擁有最新的 Skill。
+3.  **完成！** 現在該專案已經擁有最新的 Skill。
 
 > **💡 給新手的指令小知識：為什麼要 `mkdir -p`？**
 > *   Antigravity 規定的 Skill 放置位置是 `.agent/skills`。
 > *   但新專案通常沒有這些資料夾。
-> *   `mkdir -p .agent/skills` 的意思是：「幫我建立 `skills` 資料夾，如果父層 `.agent` 也不存在，就順便幫我建出來！」(Parents flag)。
-> *   這一步通了，後面的連結才能成功建立。
+> *   `mkdir -p .agent/skills` 的意思是：「幫我建立資料夾，如果父層不存在，就順便幫我建出來！」
+
+### 第三步：在多台電腦之間同步工作
+因為這個技能庫是以 Git 進行版本控制，在不同電腦間切換非常簡單：
+
+*   **當您更新了技能：** 在 `~/Documents/awesome-agent-skills` 目錄下執行 `git commit` 以及 `git push` 上傳變更。
+*   **當您換到另一台電腦：** 開啟終端機進入 `~/Documents/awesome-agent-skills`，執行 `git pull` 抓取最新進度。該電腦上所有透過 Symlink 連結技能的專案，就會在瞬間自動更新！
 
 ---
 
