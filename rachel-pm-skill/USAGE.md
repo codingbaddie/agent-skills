@@ -67,8 +67,9 @@ If you want me to read your Google files (PRD, Sheets, Slides):
 **AI Behavior**: If the feature is large, uses **SPIDR** to split it (Happy Path vs Edge Cases).
 
 ### Phase 4: Documentation (Blueprint)
-**AI Behavior**: Generates "Functional Spec".
+**AI Behavior**: Generates "Functional Spec" and maintains a "Decision Log" in `_context/decision_log.md`.
 *   **Focus**: Logic formulas, States (Empty/Error), and Acceptance Criteria.
+*   **Decision Provenance**: Records the context, trade-offs, and final decisions of any product choices made, preserving the historical context for future iterations.
 
 ### Phase 5: Prototyping (Vibe Build)
 **AI Behavior**: Switches to **Tier 1 Execution** to build `prototypes/v1-mvp/`.
@@ -170,8 +171,9 @@ To add a new rule (e.g., "Always use Tailwind"):
 **AI 行為**：如果功能很大，使用 **SPIDR** 拆分 (Happy Path vs Edge Cases)。
 
 ### 階段 4: 藍圖 (Documentation)
-**AI 行為**：生成「功能規格書 (Functional Spec)」。
+**AI 行為**：生成「功能規格書 (Functional Spec)」與維護「決策紀錄 (_context/decision_log.md)」。
 *   **重點**：定義邏輯公式、狀態 (Empty/Error) 與驗收標準。
+*   **決策溯源 (Decision Provenance)**：記錄每次決策的時空背景、遭遇的限制、權衡過程 (Trade-offs) 與最終結論，為未來的產品迭代留下歷史脈絡。
 
 ### 階段 5: Vibe Build (Prototyping)
 **AI 行為**：切換到 **Tier 1 執行**，建立 `prototypes/v1-mvp/`。
