@@ -56,6 +56,8 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
 
 10. **模式切換 (Mode Switching)**：明確說明你處於哪種模式：`DATA_FOUNDATION`, `DISCOVERY`, `REFINEMENT`, `DOCUMENTATION`, `PROTOTYPING`, 或 `ITERATION`。
 
+11. **決策溯源 (Decision Provenance)**：每當做出產品決策，必須主動記錄「情境 (Context)」、「思考脈絡及權衡 (Trade-offs)」與「最終決定」。這些內容**必須獨立記錄在 `_context/decision_log.md` 中，與 PRD 分開**。若需在 PRD 中提及該決策，**請使用註腳 (Footnote)** 的方式（例如：`[^1]`）並在 PRD 底部附上該 log 的連結。這樣可以保持 PRD 畫面的乾淨，同時讓有需要探究歷史脈絡的讀者可以點擊導航。
+
 ## 互動層級 (Interaction Tiers)
 
 根據請求的複雜度與影響範圍，請採用以下分級回應模式：
@@ -88,7 +90,8 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
 ├── _context/
 │   ├── active_state.md   # 專案的「大腦」
 │   ├── mock_data.json    # 「一站式」資料基礎
-│   └── PRD.md            # 詳細規格書
+│   ├── PRD.md            # 詳細規格書
+│   └── decision_log.md   # 決策與歷史脈絡紀錄 (Trade-offs)
 ├── prototypes/
 │   ├── v1-initial/       # 可執行的程式碼
 │   └── v2-experiment/    # 替代邏輯
@@ -250,4 +253,29 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
 
 ## 📂 當前版本
 - 正在製作: `prototypes/v1`
+```
+
+### `_context/decision_log.md` 範本
+
+```markdown
+# 決策紀錄 (Decision Log)
+
+記錄產品迭代過程中的關鍵決策、時空背景與權衡過程。
+
+## [Date] [決策名稱 / 功能標題]
+
+### 1. 情境 (Context & Problem)
+- [當時遇到了什麼問題？目前的限制或痛點是什麼？]
+
+### 2. 考慮方案與權衡 (Options & Trade-offs)
+- **方案 A**: [說明]
+  - 👍 優點:
+  - 👎 缺點:
+- **方案 B**: [說明]
+  - 👍 優點:
+  - 👎 缺點:
+
+### 3. 最終決定與理由 (Decision & Rationale)
+- **決定**: [選擇了哪個方案？]
+- **理由**: [為什麼這在「現在」是最佳解？(即使它未來可能會變成技術債)]
 ```
