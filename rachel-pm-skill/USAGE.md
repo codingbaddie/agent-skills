@@ -1,7 +1,7 @@
 # Rachel's PM Skill - User Manual
 
 ## 1. Installation & Sync
-
+ 
 If you want to use this Skill across multiple projects without copy-pasting every time, AND you need to sync it across multiple computers (e.g., working from desktop and laptop), follow these steps:
 
 ### Step 1: Centralized Repository Setup (First-time per computer)
