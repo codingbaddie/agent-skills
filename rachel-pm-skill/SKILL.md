@@ -118,9 +118,42 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
         -   **Happy Path**：完整、乾淨的資料。
         -   **Edge Cases**：欄位缺失、超長字串、未來日期、停用狀態、特殊字元。
         -   **量級**：足以測試版面崩壞的量 (分頁、折行)。
-3.  **限制**：此檔案是資料的 **唯一真理 (Single Source of Truth)**。所有未來的原型都必須讀取此資料。
+3.  **限制**：此檔案是資料的 **唯一真理 (Single Source of Truth)**。所有未來的原型都必須讀取此資料。不論任何專案或分支，**務必優先根據情境 (Scenario) 創建 Raw Data**，確保 Prototype 能展現各種極端情境供 QA 參考。
 
 ---
+
+## 數據模擬指南 (Data Simulation Guide)
+
+為了在專案初期就能生成「高擬真、邏輯完整、可隨時間變化」的測試資料，採用 **Data-First Prototyping (資料優先原型開發)** 模式。
+
+### 1. 核心觀念：從 "Mock Data" 轉向 "Data Simulation"
+不要只給一份 "JSON 範例"，而是提供 **「業務邏輯」** 和 **「使用者劇本」**。
+- **傳統做法**：提供 UI 截圖 -> 產生硬編碼 (Hardcoded) 的死資料。
+- **Data-First**：提供「資料結構」+「邏輯規則」-> 撰寫 **Simulation Engine (生成器)**。這可以支援「時間旅行」(Time Travel)，完美模擬隨週數變化的資料。
+
+### 2. 初始化專案時需要的資訊 (Prompt 範本)
+在專案啟動時，請提供以下三類資訊：
+- **A. 資料實體 (Entities & Relationships)**：定義系統中的名詞及其關係 (例如：User has many DailyLogs)。
+- **B. 關鍵變數與計算邏輯 (Logic & Metrics)**：定義狀態邏輯 (例如：什麼是紅燈？Carry Over 規則為何？)。
+- **C. 使用者劇本 (Personas/Scenarios)**：定義你想看到的「故事」。例如：
+    1.  **模範生**: 每天紀錄，穩定達成目標。
+    2.  **中途放棄者**: 前期正常，後期資料中斷。
+    3.  **溜溜球效應**: 數據反覆波動。
+    4.  **極端案例**: 測試 UI 容錯的異常數據。
+
+### 3. 開發流程 (Workflow)
+1.  **定義 Data Schema**: 確認 JSON 結構。
+2.  **建立 `Simulation Engine`**: 撰寫 `generateData(scenario, currentWeek)` 函數。
+3.  **UI 綁定**: 前端接上 Engine，使 "Week Filter" 等 UI 組件能即時反映數據變化。
+4.  **Edge Case 驗證**: 生成大量隨機 User 驗證版面穩定性。
+
+### 4. 重要規範 (Mandatory Rules)
+- **情境優先**：不論在什麼專案或什麼分支，首要任務是根據初步劇本 (Scenario) 先創建 **Raw Data (原始資料)**。
+- **QA 友善**：這些資料必須包含各種 Happy Path 與 Edge Cases，以便在 Prototype 階段就能讓 QA 參考並驗證各種情境下的 UI 與邏輯表現。
+- **資料可搜尋性**：優先檢查專案中是否有 `docs/raw_mock_data.js` 或類似文件作為該專案的資料基礎。若無，則根據需求生成。
+
+---
+
 
 ## 模式 A: 探索 (Discovery - "Peter Su" 策略階段)
 
