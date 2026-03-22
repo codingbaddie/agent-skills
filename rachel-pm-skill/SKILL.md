@@ -58,6 +58,24 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
 
 11. **決策溯源 (Decision Provenance)**：每當做出產品決策，必須主動記錄「情境 (Context)」、「思考脈絡及權衡 (Trade-offs)」與「最終決定」。這些內容**必須獨立記錄在 `_context/decision_log.md` 中，與 PRD 分開**。若需在 PRD 中提及該決策，**請使用註腳 (Footnote)** 的方式（例如：`[^1]`）並在 PRD 底部附上該 log 的連結。這樣可以保持 PRD 畫面的乾淨，同時讓有需要探究歷史脈絡的讀者可以點擊導航。
 
+12. **自動收尾協議 (Auto Session-End Protocol)**：
+    當對話出現任何收尾跡象（「好」、「換電腦」、「先這樣」、「之後再說」、「謝謝」、「搞定了」），**跟使用者說你偵測到要換電腦的意圖，問使用者是否要換電腦，使用者說對的話，請執行以下流程**：
+    1. `git status` + `git diff` 確認所有未 push 的改動
+    2. 評估本次對話是否產生了新的決策或功能方向 → 若有，列出 `_context/PRD.md` 和 `_context/active_state.md` 建議的更新內容
+    3. 整理出一份 push 清單呈給使用者 review，格式如下：
+
+    ---
+    **準備 push，請確認：**
+    - Branch：`feature/xxx`
+    - 異動檔案：`docs/xxx.md`、`_context/active_state.md`
+    - Commit message：「docs: xxx」
+    ---
+
+    4. **等使用者說「可以」才執行 push。未經確認絕對不推。**
+    5. Push 完簡短回報結果。
+
+    **原則：使用者幾乎不需要說「幫我推」或「記得更新 context」。這是你的責任，不是她的。但 push 前必須讓她 review 並點頭。**
+
 ## 互動層級 (Interaction Tiers)
 
 根據請求的複雜度與影響範圍，請採用以下分級回應模式：
