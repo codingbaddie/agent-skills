@@ -15,7 +15,7 @@ description: "Write and iterate illustrated user manuals (圖文使用手冊) fo
 | `docs/<feature>_user_manual.md` | 手冊內容源頭(圖片用相對路徑 `images/xxx.jpg`) |
 | `docs/images/manual_*.jpg` | PROD 實機截圖 |
 | `docs/manual_state.md` | 狀態檔:PROD 版本、截圖清單與操作路徑、待確認問題(**每次開工先讀,收工必更新**) |
-| `docs/<feature>_user_manual.docx` | 產出物,給 Google Docs 用,由腳本重建 |
+| `docs/<feature>_user_manual.docx` | 建置產物,給 Google Docs 用,由腳本重建。**不進版控**(gitignore),發佈版本由 Google Drive 版本管理保存 |
 | `scripts/md2docx.js` | md → docx 轉換器(本 skill 附帶,第一次使用時複製進 repo) |
 
 ## 工作流程
@@ -63,7 +63,7 @@ node scripts/md2docx.js docs/<feature>_user_manual.md docs/<feature>_user_manual
 
 ### Phase 5 — 收尾
 1. 更新 `docs/manual_state.md`:PROD 版本、本次變更、截圖清單、待確認問題。
-2. commit(md + images + docx + state),訊息格式:`docs: <feature> 使用手冊 vX.Y(變更摘要)`。
+2. commit(md + images + state,**docx 不進版控、加入 .gitignore**),訊息格式:`docs: <feature> 使用手冊 vX.Y(變更摘要)`。
 3. **push 由使用者執行**(沙盒無 SSH 金鑰):`git push origin <branch>`。
 4. 提醒使用者:Google Drive 對舊 docx 用「管理版本 → 上傳新版本」,分享連結不變。
 
