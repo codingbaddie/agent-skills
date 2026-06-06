@@ -64,13 +64,20 @@ awesome-agent-skills/
 
 - **Commit 訊息**:`<type>(<skill名>): <做了什麼>`,type 用 `feat` / `fix` / `docs` / `refactor` / `archive`。例:`feat(manual-writer): tooltip 截圖限制與對策`
 - **節奏**:改完即 commit + push,不累積。動工前先 `git pull`。
-- **新電腦開機流程**:
+- **新電腦 / 換電腦開機流程**(可重複執行,`ln -sfn` 已存在會覆蓋):
   ```bash
-  git clone git@github.com:codingbaddie/agent-skills.git ~/Documents/awesome-agent-skills
+  # 1. skill 倉庫(已有就 pull,沒有就 clone)
+  cd ~/Documents/awesome-agent-skills 2>/dev/null && git pull || git clone git@github.com:codingbaddie/agent-skills.git ~/Documents/awesome-agent-skills
+
+  # 2. 個人層捷徑(所有 repo 的 Claude Code 可呼叫)— 每個常用 skill 一條
   mkdir -p ~/.claude/skills
-  ln -s ~/Documents/awesome-agent-skills/manual-writer ~/.claude/skills/manual-writer
-  # 每個需要的 skill 一條;專案層捷徑進到各 repo 的 .agent/skills/ 照樣 ln -s
+  ln -sfn ~/Documents/awesome-agent-skills/manual-writer ~/.claude/skills/manual-writer
+  ln -sfn ~/Documents/awesome-agent-skills/rachel-pm-skill ~/.claude/skills/rachel-pm-skill
+
+  # 3. 各專案 repo:git pull 後補專案層捷徑(如需要)
+  # ln -sfn ~/Documents/awesome-agent-skills/<skill> <repo>/.agent/skills/<skill>
   ```
+- **指令同步不到的每機設定**:Chrome「允許多檔下載」(第一次跑截圖時點允許)、Cowork 的 .skill 安裝(要用時重新打包裝一次)。
 
 ## 六、給 AI 的指令(把這段唸給任何 AI 都有效)
 
