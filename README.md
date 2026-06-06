@@ -37,7 +37,8 @@ awesome-agent-skills/
 |---|---|---|
 | Claude Code(所有 repo) | `~/.claude/skills/<skill> → 本倉庫/<skill>` 個人層捷徑 | 一條捷徑,全部 repo 自動發現,可用 `/skill名` 觸發 |
 | Claude Code(特定 repo)/ Gemini / 其他 | repo 內 `.agent/skills/<skill> → 本倉庫/<skill>` 捷徑 + 該工具設定檔(CLAUDE.md / GEMINI.md)指路 | 捷徑**不進專案 git**(它是個人的,不強加給同事) |
-| Cowork(桌面 app) | 把 skill 資料夾 zip 成 `.skill` 安裝 | 注意:安裝是快照,skill 更新後要重新打包安裝 |
+| Cowork(桌面 app) | **首選**:開專案時把本倉庫也一起加入工作資料夾,對 AI 說「讀 .agent/skills/<skill> 照著做」(或由專案 CLAUDE.md 指路) | Cowork 不自動掃描資料夾內的 skill;repo 裡的捷徑指向倉庫,倉庫沒掛載捷徑會斷 |
+| Cowork(替代) | 把 skill 資料夾 zip 成 `.skill` 安裝 | 換到自動觸發,但安裝是快照,skill 更新後要重新打包安裝 |
 
 **指路原則(progressive disclosure)**:工具設定檔(如 CLAUDE.md)每次對話全文載入,只放「摘要 + 觸發對照表 + 完整內容的路徑」;完整 SKILL.md 命中觸發詞才去讀。省 context,細節不走樣。
 
