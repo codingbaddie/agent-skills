@@ -49,14 +49,16 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
     -   *壞例子*：「我更新了程式碼。」
     -   *好例子*：「這是計畫...我們有共識可以繼續嗎？」-> *使用者說好* -> *然後*你才寫程式碼。
 
-9.  **工具意識 (Tooling Awareness)**：
+9.  **PR 發布紀律 (PR Discipline)**（2026-07 定）：替任何 repo 起草 PR 之前，**必先讀該 repo 的 `.github/PULL_REQUEST_TEMPLATE.md`** 並照其結構填寫——不要自創格式。template 中的自我檢查項要逐項核實後才勾選；reviewer 該勾的欄（如 loki 雙簽 checklist）留空。repo 沒有 template 時才用自訂結構。
+
+10. **工具意識 (Tooling Awareness)**：
     -   **Google Workspace (Docs, Sheets, Slides, Drive)**：如果有任何涉及 Google Workspace 的連結或需求。
     -   **主動檢查憑證**：你必須**主動**檢查專案根目錄是否有 Service Account Key (通常命名為 `service_account.json` 或 `google_credentials.json`)。
     -   **使用權限**：如果發現憑證，**自動使用**該憑證來讀取檔案、列出雲端硬碟內容或讀取試算表數據，不需要每次都問。
 
-10. **模式切換 (Mode Switching)**：明確說明你處於哪種模式：`DATA_FOUNDATION`, `DISCOVERY`, `REFINEMENT`, `DOCUMENTATION`, `PROTOTYPING`, 或 `ITERATION`。
+11. **模式切換 (Mode Switching)**：明確說明你處於哪種模式：`DATA_FOUNDATION`, `DISCOVERY`, `REFINEMENT`, `DOCUMENTATION`, `PROTOTYPING`, 或 `ITERATION`。
 
-11. **決策溯源 (Decision Provenance)**：每當做出產品決策，必須主動記錄「情境 (Context)」、「思考脈絡及權衡 (Trade-offs)」與「最終決定」。這些內容**必須獨立記錄在 `_context/decision_log.md` 中，與 PRD 分開**。若需在 PRD 中提及該決策，**請使用註腳 (Footnote)** 的方式（例如：`[^1]`）並在 PRD 底部附上該 log 的連結。這樣可以保持 PRD 畫面的乾淨，同時讓有需要探究歷史脈絡的讀者可以點擊導航。
+12. **決策溯源 (Decision Provenance)**：每當做出產品決策，必須主動記錄「情境 (Context)」、「思考脈絡及權衡 (Trade-offs)」與「最終決定」。這些內容**必須獨立記錄在 `_context/decision_log.md` 中，與 PRD 分開**。若需在 PRD 中提及該決策，**請使用註腳 (Footnote)** 的方式（例如：`[^1]`）並在 PRD 底部附上該 log 的連結。這樣可以保持 PRD 畫面的乾淨，同時讓有需要探究歷史脈絡的讀者可以點擊導航。
 
 12. **自動收尾協議 (Auto Session-End Protocol)**：
     當對話出現任何收尾跡象（「好」、「換電腦」、「先這樣」、「之後再說」、「謝謝」、「搞定了」），**跟使用者說你偵測到要換電腦的意圖，問使用者是否要換電腦，使用者說對的話，請執行以下流程**：
@@ -244,6 +246,8 @@ description: 專為 PM 設計的技能，用於迭代設計、撰寫文檔和原
     -   **活規格只寫當前真相**：不留刪除線、不留「（YYYY-MM-DD 修訂）」內嵌註記；歷史一律進 decision_log，PRD 以註腳連結回去。已驗證完的假設不是「限制」，直接移除。
     -   **提到任何文件必附連結**（外部 Google Doc 用完整 URL、repo 內文件用相對路徑）；內部章節引用給錨點，且引用處自帶一句話上下文——不依賴跳轉也能讀懂（部分閱讀器不支援錨點）。
     -   **內部速記不落地**：「不划算」「誤判出口=走請假流程」這類只有討論當事人懂的簡寫，寫進文件前先展開成完整句子。
+    -   **PRD 讀者邊界（2026-07-30 Rachel 定，違反成本高）**：PRD 的讀者是 dev／QA／設計師，他們**只讀 PRD、不讀需求方文件**。因此 PRD 規格本體**只寫正面陳述的當前規則**，絕不寫「需求方原文是 X、本 PRD 修正為 Y」這類對照——那是 PM 與需求方之間的對話，一律進 decision_log。規則需要理由時，用規則自身的因果講（「若寫成剛好等於 N，漏跑一天即永久漏觸發」），不引需求方原文。需求方文件的合法棲息地只有三處：標頭「來源需求」（出處元資料）、待確認清單的 Q 追蹤表（對需求方的問答帳）、註腳。
+    -   **規則必在地（2026-08-01 Rachel 定）**：PRD 拆分後，「定義不複製、只連結」僅適用於**上游定義**（別的功能產出的概念，如等級、循環——本文件讀者只用結果）；**本功能自身的實作必要規則絕不外連**（如名單成員資格、排除條件），必須在本文件內完整可讀。判別法：拿掉這條規則本功能就做不對 → 它是本地規則，寫在地；只是解釋某個名詞從哪來 → 可連結。
 4.  **定義狀態 (State Definition)**：強制檢查是否定義了 `Loading`, `Error`, `Empty`, `Partial` 等狀態。
 5.  **事件驅動架構 (Event-Driven Architecture)**：對於複雜邏輯，採用「事件驅動」格式描述行為，協助 BE/QA 拆解狀態機。格式如下：
     -   **[時間/場合] 事件：[主體 + 動作]**
