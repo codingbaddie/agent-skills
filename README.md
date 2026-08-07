@@ -19,6 +19,7 @@ awesome-agent-skills/
 ├── README.md            ← 本文件(方法論)
 ├── rachel-pm-skill/     ← 資深 PM 顧問協作規則(軟體產品開發)
 ├── manual-writer/       ← 圖文使用手冊產生與迭代(瀏覽 PROD + 截圖 + md→docx)
+├── brd-writer/          ← 業務/專業服務單位的 BRD 訪談與文件產生
 └── _archive/            ← 封存區:不再使用但不刪除的 skills(轉職時整批移入)
 ```
 
@@ -74,6 +75,7 @@ awesome-agent-skills/
   mkdir -p ~/.claude/skills
   ln -sfn ~/Documents/awesome-agent-skills/manual-writer ~/.claude/skills/manual-writer
   ln -sfn ~/Documents/awesome-agent-skills/rachel-pm-skill ~/.claude/skills/rachel-pm-skill
+  ln -sfn ~/Documents/awesome-agent-skills/brd-writer ~/.claude/skills/brd-writer
 
   # 3. 各專案 repo:git pull 後補專案層捷徑(如需要)
   # ln -sfn ~/Documents/awesome-agent-skills/<skill> <repo>/.agent/skills/<skill>
