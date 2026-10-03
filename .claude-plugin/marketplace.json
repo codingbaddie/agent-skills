@@ -1,0 +1,43 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "codingbaddie-skills",
+  "description": "Rachel Weng's PM skills for Claude: BRD writing and review, a senior-PM consultant, and illustrated user manuals.",
+  "owner": {
+    "name": "Rachel Weng (codingbaddie)",
+    "url": "https://github.com/codingbaddie"
+  },
+  "plugins": [
+    {
+      "name": "brd-writer",
+      "source": "./brd-writer",
+      "description": "For business / professional-services teams: an interview-style skill that turns a vague pain point into a BRD a software PM can make decisions on, then self-checks it against evidence.",
+      "category": "productivity",
+      "keywords": ["brd", "business-requirements", "requirement-gathering", "interview", "pm"],
+      "version": "0.7.0"
+    },
+    {
+      "name": "brd-reviewer",
+      "source": "./brd-reviewer",
+      "description": "For PMs: review a received BRD, find information gaps, and produce a follow-up question list ready to send to the requester; across several BRDs, flag where requirements collide.",
+      "category": "productivity",
+      "keywords": ["brd", "requirements-review", "gap-analysis", "pm"],
+      "version": "0.7.0"
+    },
+    {
+      "name": "rachel-pm-skill",
+      "source": "./rachel-pm-skill",
+      "description": "A senior-PM consultant mode for software product work: trade-offs with every recommendation, align before acting, story splitting, decision logs, and functional spec templates.",
+      "category": "productivity",
+      "keywords": ["pm", "prd", "user-stories", "spec", "decision-log"],
+      "version": "2.0.0"
+    },
+    {
+      "name": "manual-writer",
+      "source": "./manual-writer",
+      "description": "Write and iterate illustrated user manuals by browsing production with Claude in Chrome, capturing real screenshots, keeping Markdown as the source of truth, and exporting Word.",
+      "category": "productivity",
+      "keywords": ["user-manual", "documentation", "screenshots", "docx"],
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "brd-toolkit",
+  "description": "BRD writer (for business teams) + BRD reviewer (for PMs). Based on codingbaddie/agent-skills.",
+  "version": "0.7.0",
+  "author": {
+    "name": "Rachel Weng (codingbaddie)",
+    "url": "https://github.com/codingbaddie/agent-skills"
+  },
+  "license": "MIT"
+}
